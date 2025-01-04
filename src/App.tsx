@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import SettingsPage from "./pages/SettingsPage";
 import ProfilePage from "./pages/ProfilePage";
 import { useAuthStore } from "./store/useAuthStore";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { useThemeStore } from "./store/useThemeStore";
@@ -15,8 +15,9 @@ import { useThemeStore } from "./store/useThemeStore";
  * And PureComponent to prevent unnecessary re-rendering (Loader)
  */
 const App = () => {
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
   const { theme } = useThemeStore();
+  console.log(onlineUsers);
 
   useEffect(() => {
     checkAuth();
